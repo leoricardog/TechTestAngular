@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkTechTestAngular=self.webpackChunkTechTestAngular||[]).push([[621],{621:(c,n,u)=>{u.r(n),u.d(n,{BookListModule:()=>l});var t=u(895),s=u(256);let l=(()=>{class o{}return o.\u0275fac=function(a){return new(a||o)},o.\u0275mod=s.oAB({type:o}),o.\u0275inj=s.cJS({imports:[t.ez]}),o})()}}]);
