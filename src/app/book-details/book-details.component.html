@@ -1,0 +1,29 @@
+<div class="border p-5" *ngIf="entity$|async as entity" style="overflow: auto">
+  <div class="w50 d-inline-block">
+    <div class="w50 d-inline-block">
+      <img height="200" src="{{entity.firstThumbnailUrl}}" alt="{{entity.title}}">
+    </div>
+    <div class="w50 d-inline-block">
+      <p>ISBN: {{entity.isbn}}</p>
+      <p>Title: {{entity.title}}</p>
+      <p>Author(s): <span *ngFor="let author of entity.authors">{{author}}<br></span></p>
+      <p>Price: {{entity.price}}</p>
+      <p>Published Date: {{entity.published | date:"dd/MM/YYYY"}}</p>
+      <p>Rating: <span *ngFor="let star of range(5)">
+      <i class="fa fa-star" *ngIf="star<entity.rating; else elseBlock"></i>
+      <ng-template #elseBlock>
+          <i class="far fa-star"></i>
+      </ng-template>
+    </span></p>
+    </div>
+  </div>
+  <div class="w50 d-inline-block">
+      <fieldset>
+        <legend>Description:</legend>
+        <p>{{entity.description}}</p>
+      </fieldset>
+  </div>
+</div>
+<div>
+  <button (click)="back()">Back</button>
+</div>

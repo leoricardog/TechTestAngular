@@ -1,0 +1,35 @@
+<table class="w100 mt-5" cellspacing="0" style="border-collapse: collapse">
+  <thead>
+  <tr>
+    <th></th>
+    <th>ISBN</th>
+    <th>Title</th>
+    <th>Author(s)</th>
+    <th>Price</th>
+    <th>Published date</th>
+    <th>Rating</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let item of books$|async" class="border p-5">
+    <td width="100"><img (click)="showDetails(item.isbn)" width="80" src="{{item.firstThumbnailUrl}}"
+                         alt="{{item.title}}"></td>
+    <td>{{item.isbn}}</td>
+    <td>{{item.title}}</td>
+    <td><span *ngFor="let author of item.authors">{{author}}<br></span></td>
+    <td>{{item.price}} &euro;</td>
+    <td>{{item.published | date:"dd/MM/YYYY"}}</td>
+    <td><span *ngFor="let star of range(5)">
+      <i class="fa fa-star" *ngIf="star<item.rating; else elseBlock"></i>
+      <ng-template #elseBlock>
+          <i class="far fa-star"></i>
+      </ng-template>
+    </span></td>
+  </tr>
+  <ng-container *ngIf="books$|async as books">
+    <tr *ngIf="!books.length">
+      <td colspan="7" class="text-center"><i>No elements</i></td>
+    </tr>
+  </ng-container>
+  </tbody>
+</table>

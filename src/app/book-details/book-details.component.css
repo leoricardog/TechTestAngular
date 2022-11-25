@@ -1,0 +1,11 @@
+fieldset{
+  min-height: 225px;
+}
+
+button{
+  margin-top: 20px;
+  padding: 10px;
+  border-radius: 0;
+  box-shadow: 5px 5px;
+  float: right;
+}

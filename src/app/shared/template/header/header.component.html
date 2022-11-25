@@ -1,0 +1,35 @@
+<div class="border p-5 d-flex f-between mb-5">
+  <div class="w60 d-flex gap-4">
+
+    <div class="">
+      <p><b>Recently search:</b></p>
+    </div>
+
+    <div class="search" *ngIf="record[0]">
+      <p (click)="redirectTo(record[0])">{{record[0]}}</p>
+    </div>
+
+    <div *ngIf="record[1]" class="b-r"></div>
+
+    <div *ngIf="record[1]" class="search">
+      <p (click)="redirectTo(record[1])">{{record[1]}}</p>
+    </div>
+
+    <div *ngIf="record[2]" class="b-r"></div>
+
+    <div *ngIf="record[2]" class="search">
+      <p (click)="redirectTo(record[2])">{{record[2]}}</p>
+    </div>
+
+  </div>
+
+  <div class="w40">
+    <form name="form" [formGroup]="form">
+      <input type="text" id="search" placeholder="Search" formControlName="search"
+             (keyup.enter)="search()">
+      <span id="search-icon" class="fa fa-search"></span>
+    </form>
+
+  </div>
+</div>
+

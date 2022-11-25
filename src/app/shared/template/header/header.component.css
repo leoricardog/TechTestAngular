@@ -1,0 +1,13 @@
+#search{
+  padding: 10px;
+  padding-right: 0;
+  padding-left: 25px;
+  width: 90%;
+}
+
+#search-icon{
+  position: absolute;
+  top: 11px;
+  left: 5px;
+  color: gray;
+}
