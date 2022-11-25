@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
     this.form = new FormGroup({
       search: new FormControl()
     });
-    
+
     this.route.queryParams.subscribe(vals => {
       if (vals['search'])
         this.form.get('search').setValue(this.route.snapshot.queryParams['search'])
