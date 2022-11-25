@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 import {BookService} from "../../services/book.service";
 import {Observable} from "rxjs";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-header',
@@ -14,14 +14,26 @@ export class HeaderComponent implements OnInit {
   result$: Observable<any> = new Observable<any>();
   record: any[] = [];
 
-  constructor(private service: BookService, private router: Router) {
+  constructor(private service: BookService,
+              private router: Router,
+              private route: ActivatedRoute) {
   }
 
   ngOnInit(): void {
-    this.manageHistory()
+
+    this.manageHistory();
+    this.buildingForm();
+  }
+
+  buildingForm() {
     this.form = new FormGroup({
       search: new FormControl()
     });
+    
+    this.route.queryParams.subscribe(vals => {
+      if (vals['search'])
+        this.form.get('search').setValue(this.route.snapshot.queryParams['search'])
+    })
 
     if (!this.form.get('search').value)
       this.router.navigateByUrl('');
@@ -29,6 +41,7 @@ export class HeaderComponent implements OnInit {
     this.form.get('search').valueChanges.subscribe((val: string) => {
       if (!val) this.router.navigateByUrl('');
     })
+
   }
 
   search() {
