@@ -2,6 +2,10 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.4.
 
+## Project Location
+
+Open command terminal and will be in the root folder of the projectr `cd [pathToProjectFolder]/TechTestAngular`.
+
 ## Install dependencies
 
 Run `npm install` for install node modules.
